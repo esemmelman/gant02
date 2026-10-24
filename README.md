@@ -1,4 +1,4 @@
-# Gant02 · v1.3.0
+# Gant02 · v1.4.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -9,6 +9,7 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 ## Use
 
 - Type in the blank project row and press Enter or Tab. Each project has a blank task row for the same inline creation. Enter keeps the next blank task row focused for fast entry.
+- Project rows and task rows both accept independent date colors. Drag a colored square to another date or row to move it (replaces the destination color). Both source and destination save in one database transaction. Click a colored square to recolor it; drag from a blank square to paint a range.
 - Select Assigned (blue), In progress (amber), or Complete (green), then click any task/date square. Drag to paint several dates. Each square saves independently; Clear removes a color.
 - Select Schedule bars to use the original date-range drawing, moving and resizing. Existing scheduled dates appear in their task color in paint mode; painting overrides only the selected dates.
 - Drag a bar to move its schedule. Drag either edge to resize. Use the details panel for exact dates.
@@ -28,6 +29,7 @@ Existing Supabase project: **bnaimitzvah** (`fgomaujsdblpzxhnnqrg`). This app us
 - `public.gant02_20261024_projects`
 - `public.gant02_20261024_tasks`
 - `public.gant02_20261024_cells`
+- `public.gant02_20261024_project_cells`
 
 No other application's data, tables, policies, auth, storage, or settings are changed. The schema is recorded in `database/schema.sql` for reference; do not rerun against the existing database. Public CRUD policies implement the requested open access. The browser contains only a publishable API key, never a privileged key. Task dates are inclusive calendar dates. Deleting a project deletes its tasks.
 
