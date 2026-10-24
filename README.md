@@ -1,4 +1,4 @@
-# Gant02 · v1.10.0
+# Gant02 · v1.10.1
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -43,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.10.0)
+## Date filters and notes (v1.10.1)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -66,3 +66,5 @@ The Collapse all/Expand all button beside Complete toggles every project. Dayflo
 The note panel keeps the existing rich-text note and adds a Comments section. New comment creates a separate timestamped entry. Each entry autosaves after 500ms, and closing the panel flushes pending comment changes. Multiple entries can be edited independently on desktop and Android. Delete an entry with its × button. Comments are scoped to their project or task and cascade when that parent is deleted. Empty new entries are not persisted. Failed saves retain the text and keep the panel open for retry.
 
 While dragging a colored square, a floating label follows the pointer and shows the destination M-DD ddd plus numeric days out.
+
+Comment boxes start at 180px on desktop and 220px on Android. The main Notes box starts at 96px and scrolls for longer content. Both can be resized vertically.
