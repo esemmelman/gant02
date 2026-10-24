@@ -32,3 +32,6 @@ body.android-mode{font-family:system-ui,Arial,sans-serif}.android-mode main{marg
 #square-drag-hint{position:fixed;z-index:60;pointer-events:none;background:#263c30;color:white;padding:7px 10px;border-radius:5px;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap;box-shadow:0 3px 12px #0003}
 
 #notes,.android-mode #notes{flex:none;height:96px;min-height:72px;overflow:auto;resize:vertical}.comment-entry textarea{min-height:180px}.android-mode .comment-entry textarea{min-height:220px}
+
+/* Use the space freed by task metadata for the description. */
+#notes,.android-mode #notes{height:280px;min-height:180px}.android-mode #notes{height:240px;min-height:160px}

@@ -1,4 +1,4 @@
-# Gant02 · v1.10.1
+# Gant02 · v1.10.2
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -13,8 +13,8 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 - Select Assigned (blue), In progress (amber), or Complete (green), then click any task/date square. Drag to paint several dates. Each square saves independently; Clear removes a color.
 - Date headers show only the month. The color controls sit immediately beside the All date-window dropdown.
 - A new task automatically starts with an Assigned square on today, regardless of the selected paint color. The task and square are created in one transaction. Additional dates remain independent.
-- Drag colored squares to move them. Use the details panel for exact start/finish metadata.
-- Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = complete.
+- Drag colored squares to move them. Use the notes panel for descriptions and comment entries.
+- Use the color controls to mark individual dates. Blue = assigned, amber = in progress, green = complete.
 - Drag a task by its name to reorder it or move it into another project. Drop above or below a task to choose the position.
 - Drag a project by its name to move the whole project and its tasks. Drop on the blank project row to move it to the end.
 - Task rows are 22px high; project rows are 24px. No drag handles, project counts, or per-project add-task links.
@@ -43,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.10.1)
+## Date filters and notes (v1.10.2)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -67,4 +67,6 @@ The note panel keeps the existing rich-text note and adds a Comments section. Ne
 
 While dragging a colored square, a floating label follows the pointer and shows the destination M-DD ddd plus numeric days out.
 
-Comment boxes start at 180px on desktop and 220px on Android. The main Notes box starts at 96px and scrolls for longer content. Both can be resized vertically.
+Comment boxes start at 180px on desktop and 220px on Android. The Description box starts at 280px on desktop and 240px on Android and scrolls for longer content. Both can be resized vertically.
+
+The notes panel contains name, description, and comments. Project, status, assignee, and date controls have been removed from this panel. Description autosave changes only the name and rich-text description, preserving any existing task metadata.
