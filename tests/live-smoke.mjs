@@ -28,9 +28,16 @@ try {
  const retained=await request('project_cells','GET',null,null,'?project_id=eq.'+project.id+'&day=eq.2026-10-29');assert.equal(retained[0].status,'assigned');
  await request('rpc/move_cell','POST',{p_source_kind:'project',p_source_id:project.id,p_source_day:'2026-10-29',p_target_kind:'task',p_target_id:task.id,p_target_day:'2026-10-30',p_status:'assigned'});
  const movedTask=await request('cells','GET',null,null,'?task_id=eq.'+task.id+'&day=eq.2026-10-30');assert.equal(movedTask[0].status,'assigned');
+ const [commentOne]=await request('comments','POST',{id:crypto.randomUUID(),task_id:task.id,body:'First smoke comment',created_at:new Date().toISOString()});
+ const [commentTwo]=await request('comments','POST',{id:crypto.randomUUID(),task_id:task.id,body:'Second smoke comment',created_at:new Date().toISOString()});
+ const [projectComment]=await request('comments','POST',{id:crypto.randomUUID(),project_id:project.id,body:'Project smoke comment',created_at:new Date().toISOString()});
+ const taskComments=await request('comments','GET',null,null,'?task_id=eq.'+task.id);assert.equal(taskComments.length,2);
+ await request('comments','POST',{...commentOne,body:'Updated first smoke comment'});assert.equal((await request('comments','GET',null,commentOne.id))[0].body,'Updated first smoke comment');
+ await request('comments','DELETE',null,commentTwo.id);assert.equal((await request('comments','GET',null,null,'?task_id=eq.'+task.id)).length,1);
  await request('projects','DELETE',null,project.id);project=null;
  assert.equal((await request('project_cells','GET',null,null,'?project_id=eq.'+movedProject[0].project_id)).length,0);
  assert.equal((await request('cells','GET',null,null,'?task_id=eq.'+task.id)).length,0);
  assert.equal((await request('tasks','GET',null,task.id)).length,0);
- console.log('Live Supabase atomic task creation with Assigned date, failed-create rollback, square moves, failed-move rollback and cascade checks passed. Temporary records removed.');
+ assert.equal((await request('comments','GET',null,commentOne.id)).length,0);assert.equal((await request('comments','GET',null,projectComment.id)).length,0);
+ console.log('Live Supabase task creation, date squares, multiple comment entries, comment editing/deletion and cascade checks passed. Temporary records removed.');
 } finally {if(project)await request('projects','DELETE',null,project.id);}

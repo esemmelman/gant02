@@ -1,4 +1,4 @@
-# Gant02 · v1.9.0
+# Gant02 · v1.10.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -31,6 +31,7 @@ Existing Supabase project: **bnaimitzvah** (`fgomaujsdblpzxhnnqrg`). This app us
 - `public.gant02_20261024_tasks`
 - `public.gant02_20261024_cells`
 - `public.gant02_20261024_project_cells`
+- `public.gant02_20261024_comments`
 
 No other application's data, tables, policies, auth, storage, or settings are changed. The schema is recorded in `database/schema.sql` for reference; do not rerun against the existing database. Public CRUD policies implement the requested open access. The browser contains only a publishable API key, never a privileged key. Task dates are inclusive calendar dates. Deleting a project deletes its tasks.
 
@@ -42,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.9.0)
+## Date filters and notes (v1.10.0)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -59,3 +60,9 @@ Android browsers automatically show a simplified list instead of the Gantt chart
 The name count is the next colored occurrence (including today), or the most recent past occurrence if there are no future dates. A project's own date takes precedence over its children's dates, so a project dated three days away shows 3 even if a child task is assigned today. No colored dates means a blank number, not an invented zero.
 
 The Collapse all/Expand all button beside Complete toggles every project. Dayflow immediately beside it opens https://esemmelman.github.io/DayFlow/ in a new tab. Clicking a project/task name copies the displayed name (no day count) to the clipboard while retaining desktop note opening. Android taps copy the name; long presses open notes. Clipboard failures show a brief message without blocking notes.
+
+## Comment entries
+
+The note panel keeps the existing rich-text note and adds a Comments section. New comment creates a separate timestamped entry. Each entry autosaves after 500ms, and closing the panel flushes pending comment changes. Multiple entries can be edited independently on desktop and Android. Delete an entry with its × button. Comments are scoped to their project or task and cascade when that parent is deleted. Empty new entries are not persisted. Failed saves retain the text and keep the panel open for retry.
+
+While dragging a colored square, a floating label follows the pointer and shows the destination M-DD ddd plus numeric days out.
