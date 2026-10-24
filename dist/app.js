@@ -24,7 +24,7 @@ function rowMatches(item,kind='task'){const own=[...cells.values()].filter(c=>(k
 function visible(t){return rowMatches(t,'task');}
 function q(){return $('search').value.trim().toLowerCase();}
 function options(selected){return projects.map(p=>`<option value="${p.id}" ${p.id===selected?'selected':''}>${esc(p.name)}</option>`).join('');}
-function bands(){const today=diff(localToday(),start);return today>=0&&today<days?`<span class="today-line" style="left:${today*cw+cw/2}px"></span>`:'';}
+function bands(){let h='';for(let i=0;i<days;i++){const day=add(start,i);if(date(day).getUTCDay()===0)h+=`<span class="weekend-band sunday-band" data-day="${day}" style="left:${i*cw}px;width:${cw}px"></span>`;}return h;}
 function spanHTML(s,e,project=false,t=null){if(!s||!e)return '';const x=diff(s,start),n=diff(e,s)+1;if(x+n<=0||x>=days)return '';const left=Math.max(0,x)*cw+2,width=(Math.min(days,x+n)-Math.max(0,x))*cw-4;if(project)return `<span class="project-span" style="left:${left}px;width:${width}px"></span>`;return `<div class="bar ${t.status}" data-id="${t.id}" role="button" tabindex="0" aria-label="${esc(t.name)}, ${s} to ${e}, ${label[t.status]}. Arrow keys move one day; Shift and arrow keys resize." title="${esc(t.name)} · ${s} → ${e}" style="left:${left}px;width:${width}px"><span class="resize left" data-edge="start"></span><span class="bar-label">${esc(t.name)}</span><span class="resize right" data-edge="end"></span></div>`;}
 function render(){
  const filter=$('project-filter').value;$('project-filter').innerHTML='<option value="">All projects</option>'+options(filter);
