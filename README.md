@@ -1,4 +1,4 @@
-# Gant02 · v1.11.1
+# Gant02 · v1.12.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -20,7 +20,7 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 - Task rows are 22px high; project rows are 24px. No drag handles, project counts, or per-project add-task links.
 - Click a task bar/name or project name to edit its name and rich-text notes. Notes and detail fields save automatically after a short pause; closing the panel flushes pending edits.
 - Focus date squares and use left/right arrows to navigate; Enter colors the square and Delete clears it.
-- Use Today, month navigation, zoom, search, and filters to navigate. The calendar shows 120 days from the selected start.
+- Use Today, month navigation, zoom, search, and filters to navigate. Daily shows 120 days, Weekly shows 182 days, and Monthly shows 366 days from the selected start.
 - Grid edits save immediately to Supabase. Other sessions refresh every 15 seconds while idle. Detail edits save automatically.
 
 ## Backend isolation
@@ -43,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.11.1)
+## Date filters and notes (v1.12.0)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -78,3 +78,7 @@ Android task names and day counts use blue, amber, or green when that task has a
 A sticky text box at the top adds tasks to General. Tap the box or microphone once to start browser speech recognition, or type normally. Tap the microphone again to stop. Review the transcript and press Add or Enter. General is created if missing; a single transaction creates the task with today's start/finish and blue Assigned square. Repeated retries reuse a request ID to avoid duplicate tasks. Failed saves retain the text. Browser microphone permission and supported SpeechRecognition/webkitSpeechRecognition are required for dictation; typing and keyboard dictation remain available when browser voice input is unsupported or denied. No audio recording is stored in Supabase.
 
 Desktop has a New project entry immediately above each New task entry. These create independent projects and use separate drafts. Android retains its existing entry layout.
+
+## Timeline views
+
+The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on desktop. Weekly groups the header by weeks and shows about six months at 12px per day. Monthly groups months across about a year at 5px per day. Daily retains the original 26px day cells. Standard/Compact/Detailed adjusts density within each view. Every colored square still represents a single date; painting, moving, Sunday shading, and hover labels use the same date. View/density changes preserve the first visible date. Arrow navigation advances by four weeks in Daily, one week in Weekly, and a calendar month in Monthly. Today returns to today's date in any view. Android keeps its simplified list.
