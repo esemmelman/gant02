@@ -1,4 +1,4 @@
-# Gant02 · v1.6.3
+# Gant02 · v1.7.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -42,10 +42,12 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.6.3)
+## Date filters and notes (v1.7.0)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
 Hover a date header number or colored square to see days out first, followed by MM-DD ddd, for example: 3 days out · 10-27 Tue. Hover text contains no status or dragging instructions. Sunday columns have gray shading; Saturdays use the normal grid background. There is no current-day vertical line. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
 
 The calendar opens with today as its first visible date. The Today button returns to that same position.
+
+Use the trash icon beside Clear, then click a project or task name to remove it. Confirm the named item before deletion. Project deletion includes its tasks and date colors. Escape or choosing a color exits trash mode. Successful deletion also exits trash mode.

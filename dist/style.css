@@ -19,3 +19,5 @@ main{display:flex;flex-direction:column;height:calc(100dvh - 54px)}.toolbar{flex
 
 /* Shade Sunday columns only; no current-day vertical marker. */
 .sunday-band{background:#e8ece9;z-index:1}
+
+#trash-mode{color:#9d5147}#trash-mode[aria-pressed="true"]{background:#fbe8e4;border-color:#d89c91;color:#a02e24}.delete-mode .name-cell button,.delete-mode .project-name{cursor:crosshair}.delete-mode .name-cell:hover,.delete-mode .project-row .frozen:hover{background:#fff0ec!important}.delete-mode .date-square{cursor:default}
