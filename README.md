@@ -1,4 +1,4 @@
-# Gant02 · v1.11.0
+# Gant02 · v1.11.1
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -43,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.11.0)
+## Date filters and notes (v1.11.1)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -76,3 +76,5 @@ Android task names and day counts use blue, amber, or green when that task has a
 ## Android quick capture
 
 A sticky text box at the top adds tasks to General. Tap the box or microphone once to start browser speech recognition, or type normally. Tap the microphone again to stop. Review the transcript and press Add or Enter. General is created if missing; a single transaction creates the task with today's start/finish and blue Assigned square. Repeated retries reuse a request ID to avoid duplicate tasks. Failed saves retain the text. Browser microphone permission and supported SpeechRecognition/webkitSpeechRecognition are required for dictation; typing and keyboard dictation remain available when browser voice input is unsupported or denied. No audio recording is stored in Supabase.
+
+Desktop has a New project entry immediately above each New task entry. These create independent projects and use separate drafts. Android retains its existing entry layout.
