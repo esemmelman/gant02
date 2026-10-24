@@ -1,4 +1,4 @@
-# Gant02 · v1.1.0
+# Gant02 · v1.2.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -9,9 +9,10 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 ## Use
 
 - Type in the blank project row and press Enter or Tab. Each project has a blank task row for the same inline creation. Enter keeps the next blank task row focused for fast entry.
-- Drag across a blank task calendar row to assign its date range. Click one day for a one-day task.
+- Select Assigned (blue), In progress (amber), or Complete (green), then click any task/date square. Drag to paint several dates. Each square saves independently; Clear removes a color.
+- Select Schedule bars to use the original date-range drawing, moving and resizing. Existing scheduled dates appear in their task color in paint mode; painting overrides only the selected dates.
 - Drag a bar to move its schedule. Drag either edge to resize. Use the details panel for exact dates.
-- Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = done.
+- Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = complete.
 - Drag the six-dot task handle onto another task to insert before it, or onto a project to move to that project.
 - Click a task bar/name or project name to edit its name and rich-text notes. Save changes in the panel.
 - Focus a bar and use left/right arrows to move a day; Shift + arrow adjusts its finish.
@@ -24,6 +25,7 @@ Existing Supabase project: **bnaimitzvah** (`fgomaujsdblpzxhnnqrg`). This app us
 
 - `public.gant02_20261024_projects`
 - `public.gant02_20261024_tasks`
+- `public.gant02_20261024_cells`
 
 No other application's data, tables, policies, auth, storage, or settings are changed. The schema is recorded in `database/schema.sql` for reference; do not rerun against the existing database. Public CRUD policies implement the requested open access. The browser contains only a publishable API key, never a privileged key. Task dates are inclusive calendar dates. Deleting a project deletes its tasks.
 

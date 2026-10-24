@@ -22,3 +22,13 @@ alter table public.gant02_20261024_tasks enable row level security;
 create policy gant02_public_access on public.gant02_20261024_projects for all to anon, authenticated using(true) with check(true);
 create policy gant02_public_access on public.gant02_20261024_tasks for all to anon, authenticated using(true) with check(true);
 grant select,insert,update,delete on public.gant02_20261024_projects,public.gant02_20261024_tasks to anon,authenticated;
+
+-- Added in v1.2.0: independent task/date colors; null is an explicit cleared square.
+create table public.gant02_20261024_cells (
+ task_id uuid not null references public.gant02_20261024_tasks(id) on delete cascade,
+ day date not null, status text check(status in ('assigned','in_progress','done')),
+ primary key(task_id,day)
+);
+alter table public.gant02_20261024_cells enable row level security;
+create policy gant02_public_access on public.gant02_20261024_cells for all to anon,authenticated using(true) with check(true);
+grant select,insert,update,delete on public.gant02_20261024_cells to anon,authenticated;
