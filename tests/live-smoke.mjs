@@ -7,7 +7,10 @@ async function request(table,method='GET',body,id,query=''){const r=await fetch(
 let project;
 try {
  [project]=await request('projects','POST',{name:'Gant02 smoke test '+Date.now()});
- const [task]=await request('tasks','POST',{name:'Temporary persistence check',project_id:project.id});
+ const [task]=await request('rpc/create_task','POST',{p_name:'Temporary persistence check',p_project_id:project.id,p_position:1024,p_day:'2026-10-24'});
+ const initial=await request('cells','GET',null,null,'?task_id=eq.'+task.id);assert.deepEqual(initial.map(c=>[c.day,c.status]),[['2026-10-24','assigned']]);
+ const invalidCreate=await fetch(base+'rpc/'+prefix+'create_task',{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({p_name:'Must not partially create',p_project_id:project.id,p_position:2048,p_day:null})});assert.equal(invalidCreate.ok,false);
+ const remainingTasks=await request('tasks','GET',null,null,'?project_id=eq.'+project.id);assert.equal(remainingTasks.length,1);
  const [changed]=await request('tasks','PATCH',{status:'in_progress',start_date:'2026-10-24',end_date:'2026-10-27',notes:'<p><b>Saved</b> rich text</p>'},task.id);
  assert.equal(changed.status,'in_progress');
  const [saved]=await request('tasks','GET',null,task.id);assert.equal(saved.notes,'<p><b>Saved</b> rich text</p>');assert.equal(saved.start_date,'2026-10-24');
@@ -29,5 +32,5 @@ try {
  assert.equal((await request('project_cells','GET',null,null,'?project_id=eq.'+movedProject[0].project_id)).length,0);
  assert.equal((await request('cells','GET',null,null,'?task_id=eq.'+task.id)).length,0);
  assert.equal((await request('tasks','GET',null,task.id)).length,0);
- console.log('Live Supabase CRUD, task/project colors, transactional moves, failed-move rollback, clearing and cascade checks passed. Temporary records removed.');
+ console.log('Live Supabase atomic task creation with Assigned date, failed-create rollback, square moves, failed-move rollback and cascade checks passed. Temporary records removed.');
 } finally {if(project)await request('projects','DELETE',null,project.id);}

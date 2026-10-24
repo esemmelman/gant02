@@ -13,3 +13,6 @@
 
 /* More room for rows; date columns have no weekend shading. */
 .toolbar{margin-top:12px}.date-column{background:#fff}.weekday{background:#fff}.grid-wrap{height:calc(100dvh - 214px)}.drawer-footer{justify-content:flex-start}.drawer-footer #detail-message{margin-left:auto;text-align:right;font-size:11px}.timeline{background-color:#fff}.project-row .timeline{background-color:#f0f5f1}@media(max-width:1000px){.grid-wrap{height:calc(100dvh - 244px)}}@media(max-width:600px){.grid-wrap{height:calc(100dvh - 252px)}}
+
+/* One compact toolbar: colors immediately follow the All date-window dropdown. */
+main{display:flex;flex-direction:column;height:calc(100dvh - 54px)}.toolbar{flex:none}.filters{flex-wrap:wrap}.filters .paint-tools{border:0;background:none;padding:0;margin-left:4px;flex-wrap:nowrap}.grid-wrap{flex:1;height:auto;min-height:160px}.bottom{flex:none}.grid-header{height:92px}.vertical-month{height:32px}
