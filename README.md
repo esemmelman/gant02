@@ -1,4 +1,4 @@
-# Gant02 · v1.2.0
+# Gant02 · v1.3.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -13,7 +13,9 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 - Select Schedule bars to use the original date-range drawing, moving and resizing. Existing scheduled dates appear in their task color in paint mode; painting overrides only the selected dates.
 - Drag a bar to move its schedule. Drag either edge to resize. Use the details panel for exact dates.
 - Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = complete.
-- Drag the six-dot task handle onto another task to insert before it, or onto a project to move to that project.
+- Drag a task by its name to reorder it or move it into another project. Drop above or below a task to choose the position.
+- Drag a project by its name to move the whole project and its tasks. Drop on the blank project row to move it to the end.
+- Task rows are 22px high; project rows are 24px. No drag handles, project counts, or per-project add-task links.
 - Click a task bar/name or project name to edit its name and rich-text notes. Save changes in the panel.
 - Focus a bar and use left/right arrows to move a day; Shift + arrow adjusts its finish.
 - Use Today, month navigation, zoom, search, and filters to navigate. The calendar shows 120 days from the selected start.
