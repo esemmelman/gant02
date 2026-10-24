@@ -1,4 +1,4 @@
-# Gant02 · v1.4.0
+# Gant02 · v1.5.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -11,16 +11,16 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 - Type in the blank project row and press Enter or Tab. Each project has a blank task row for the same inline creation. Enter keeps the next blank task row focused for fast entry.
 - Project rows and task rows both accept independent date colors. Drag a colored square to another date or row to move it (replaces the destination color). Both source and destination save in one database transaction. Click a colored square to recolor it; drag from a blank square to paint a range.
 - Select Assigned (blue), In progress (amber), or Complete (green), then click any task/date square. Drag to paint several dates. Each square saves independently; Clear removes a color.
-- Select Schedule bars to use the original date-range drawing, moving and resizing. Existing scheduled dates appear in their task color in paint mode; painting overrides only the selected dates.
+- Select Schedule bars to use the original date-range drawing, moving and resizing. Paint mode shows only individually colored squares, keeping gaps blank. Schedule bars remain available separately.
 - Drag a bar to move its schedule. Drag either edge to resize. Use the details panel for exact dates.
 - Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = complete.
 - Drag a task by its name to reorder it or move it into another project. Drop above or below a task to choose the position.
 - Drag a project by its name to move the whole project and its tasks. Drop on the blank project row to move it to the end.
 - Task rows are 22px high; project rows are 24px. No drag handles, project counts, or per-project add-task links.
-- Click a task bar/name or project name to edit its name and rich-text notes. Save changes in the panel.
+- Click a task bar/name or project name to edit its name and rich-text notes. Notes and detail fields save automatically after a short pause; closing the panel flushes pending edits.
 - Focus a bar and use left/right arrows to move a day; Shift + arrow adjusts its finish.
 - Use Today, month navigation, zoom, search, and filters to navigate. The calendar shows 120 days from the selected start.
-- Grid edits save immediately to Supabase. Other sessions refresh every 15 seconds while idle. Detail edits save explicitly.
+- Grid edits save immediately to Supabase. Other sessions refresh every 15 seconds while idle. Detail edits save automatically.
 
 ## Backend isolation
 
@@ -40,3 +40,9 @@ Static HTML/CSS/JavaScript in `dist/`, with no runtime dependencies. Serve `dist
 GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `main`. Run `./publish.ps1 -Message 'Describe change'` to check, test, commit, and push automatically. Bump the version in package.json, package-lock.json, the app header, and this README for a release. Supabase data is saved to the database, not committed to GitHub.
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
+
+## Date filters and notes (v1.5.0)
+
+All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
+
+Hover a date header number or colored square to see its full date and days from today. Weekend columns use the normal grid background. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
