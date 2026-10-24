@@ -1,4 +1,4 @@
-# Gant02 · v1.0.0
+# Gant02 · v1.1.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -8,10 +8,10 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 
 ## Use
 
-- Create a project, then add tasks.
+- Type in the blank project row and press Enter or Tab. Each project has a blank task row for the same inline creation. Enter keeps the next blank task row focused for fast entry.
 - Drag across a blank task calendar row to assign its date range. Click one day for a one-day task.
-- Drag a bar to move its schedule. Drag either edge to resize. Use the date cells for exact dates.
-- Change status or assignee directly in the grid. Blue = assigned, amber = in progress, green = done.
+- Drag a bar to move its schedule. Drag either edge to resize. Use the details panel for exact dates.
+- Change status, assignee, or exact dates in the task details panel. Blue = assigned, amber = in progress, green = done.
 - Drag the six-dot task handle onto another task to insert before it, or onto a project to move to that project.
 - Click a task bar/name or project name to edit its name and rich-text notes. Save changes in the panel.
 - Focus a bar and use left/right arrows to move a day; Shift + arrow adjusts its finish.
