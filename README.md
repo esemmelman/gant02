@@ -1,4 +1,4 @@
-# Gant02 · v1.7.1
+# Gant02 · v1.8.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -42,12 +42,18 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.7.1)
+## Date filters and notes (v1.8.0)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
-Hover a date header number to see days out first followed by MM-DD ddd. Project names, task names, and grid squares show only a numeric day offset. Names use the next colored date, or the most recent past date when no future date exists. Project names include their tasks’ colored dates. Undated names show no tooltip. Sunday columns have gray shading; Saturdays use the normal grid background. There is no current-day vertical line. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
+Hover a date header number to see days out first followed by MM-DD ddd. Project names, task names, and grid squares show only a numeric day offset. Names use the next colored date, or the most recent past date when no future date exists. Project names use their own colored dates when present, falling back to task dates only when the project has no colored dates. Undated names show no tooltip. Sunday columns have gray shading; Saturdays use the normal grid background. There is no current-day vertical line. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
 
 The calendar opens with today as its first visible date. The Today button returns to that same position.
 
 Use the trash icon beside Clear, then click a project or task name to remove it. Confirm the named item before deletion. Project deletion includes its tasks and date colors. Escape or choosing a color exits trash mode. Successful deletion also exits trash mode.
+
+## Android
+
+Android browsers automatically show a simplified list instead of the Gantt chart. Only project/task names, numeric days out, and inline New task/New project fields appear. Names are larger and wrap. Long press a name for 550ms to open its note; scrolling or moving your finger cancels the press. Tapping a name does not open a panel. Notes remain editable and autosave. No date painting, dragging, deletion, filters, or metadata controls appear on Android. Other devices keep the desktop experience.
+
+The name count is the next colored occurrence (including today), or the most recent past occurrence if there are no future dates. A project's own date takes precedence over its children's dates, so a project dated three days away shows 3 even if a child task is assigned today. No colored dates means a blank number, not an invented zero.
