@@ -35,3 +35,6 @@ body.android-mode{font-family:system-ui,Arial,sans-serif}.android-mode main{marg
 
 /* Use the space freed by task metadata for the description. */
 #notes,.android-mode #notes{height:280px;min-height:180px}.android-mode #notes{height:240px;min-height:160px}
+
+/* Android task names and counts reflect the actual colored square for today. */
+.android-today-assigned .android-task-name,.android-today-assigned .android-days{color:#4b72ad}.android-today-in_progress .android-task-name,.android-today-in_progress .android-days{color:#946516}.android-today-done .android-task-name,.android-today-done .android-days{color:#2f815a}

@@ -1,4 +1,4 @@
-# Gant02 · v1.10.2
+# Gant02 · v1.10.3
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -43,7 +43,7 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.10.2)
+## Date filters and notes (v1.10.3)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
@@ -70,3 +70,5 @@ While dragging a colored square, a floating label follows the pointer and shows 
 Comment boxes start at 180px on desktop and 220px on Android. The Description box starts at 280px on desktop and 240px on Android and scrolls for longer content. Both can be resized vertically.
 
 The notes panel contains name, description, and comments. Project, status, assignee, and date controls have been removed from this panel. Description autosave changes only the name and rich-text description, preserving any existing task metadata.
+
+Android task names and day counts use blue, amber, or green when that task has an Assigned, In progress, or Complete square on today. Without a colored square today, text stays neutral. Project names are unchanged.
