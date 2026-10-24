@@ -1,4 +1,4 @@
-# Gant02 · v1.8.0
+# Gant02 · v1.8.1
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -42,11 +42,11 @@ GitHub Actions validates and deploys `dist/` to GitHub Pages on every push to `m
 
 The Sites copy is deployed through the Sites source helper with the existing `.openai/hosting.json` project ID. Changes pushed to GitHub automatically update GitHub Pages; updating the Sites URL additionally requires a Sites deployment.
 
-## Date filters and notes (v1.8.0)
+## Date filters and notes (v1.8.1)
 
 All is the default days filter on every page load. 1/3/7/30 Days include today through that many days from today, inclusive. Only projects and tasks with colored squares in that window are included; a matching task keeps its project visible. Project-only dates also qualify. Search/status filters combine with this window. Only matching tasks display under the project. The timeline itself remains navigable.
 
-Hover a date header number to see days out first followed by MM-DD ddd. Project names, task names, and grid squares show only a numeric day offset. Names use the next colored date, or the most recent past date when no future date exists. Project names use their own colored dates when present, falling back to task dates only when the project has no colored dates. Undated names show no tooltip. Sunday columns have gray shading; Saturdays use the normal grid background. There is no current-day vertical line. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
+Hover a date header number to see days out first followed by MM-DD ddd. Project names, task names, and colored grid squares show only a numeric day offset. Blank grid squares show M-DD ddd (for example, 1-02 Fri). Names use the next colored date, or the most recent past date when no future date exists. Project names use their own colored dates when present, falling back to task dates only when the project has no colored dates. Undated names show no tooltip. Sunday columns have gray shading; Saturdays use the normal grid background. There is no current-day vertical line. Separate meetings on the same row remain separate squares, including gaps between them. Details autosave after 500ms and flush when the panel closes. Save failures leave the panel open with an error; closing or changing notes retries.
 
 The calendar opens with today as its first visible date. The Today button returns to that same position.
 
