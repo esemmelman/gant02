@@ -1,4 +1,4 @@
-# Gant02 · v1.14.3
+# Gant02 · v1.14.4
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -104,3 +104,7 @@ Weekly columns are narrower: Standard 40px, Compact 34px, Detailed 52px. Each he
 ## v1.14.3
 
 A disclosure arrow beside any task with subtasks hides or shows its nested rows in Daily, Weekly, Monthly, and Android views. Parent tasks and their dates stay visible. Collapse state survives view changes and background refreshes for the current page session. Adding a subtask opens its parent; global Expand all opens nested subtasks too. No database changes.
+
+## v1.14.4
+
+Weekly start-date labels are bold.
