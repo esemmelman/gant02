@@ -1,4 +1,4 @@
-# Gant02 · v1.14.2
+# Gant02 · v1.14.3
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -91,7 +91,7 @@ Daily retains individual date squares. Weekly and Monthly aggregate those saved 
 
 ## v1.14.0 validation
 
-67 automated regression tests cover week/month aggregation for all row types, mixed status colors, period boundaries, leap years, date editing, creation row order, and existing desktop/Android behavior. Interactive browser visual verification was unavailable in this session. No Supabase schema or data changes were needed for these views.
+70 automated regression tests cover week/month aggregation for all row types, mixed status colors, period boundaries, leap years, date editing, creation row order, and existing desktop/Android behavior. Interactive browser visual verification was unavailable in this session. No Supabase schema or data changes were needed for these views.
 
 ## v1.14.1
 
@@ -100,3 +100,7 @@ Clicking a desktop subtask now opens SUBTASK DETAILS rather than an inline name 
 ## v1.14.2
 
 Weekly columns are narrower: Standard 40px, Compact 34px, Detailed 52px. Each header stacks its week number above the Monday start date formatted Mmm. d. Task row heights and period color aggregation are unchanged.
+
+## v1.14.3
+
+A disclosure arrow beside any task with subtasks hides or shows its nested rows in Daily, Weekly, Monthly, and Android views. Parent tasks and their dates stay visible. Collapse state survives view changes and background refreshes for the current page session. Adding a subtask opens its parent; global Expand all opens nested subtasks too. No database changes.
