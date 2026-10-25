@@ -1,4 +1,4 @@
-# Gant02 · v1.14.0
+# Gant02 · v1.14.1
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -85,10 +85,14 @@ The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on de
 
 ## Subtasks and period labels (v1.13.0)
 
-Right-click a task name and choose **Add subtask**, then type a name and press Enter or Tab. Subtasks appear indented beneath their parent. They have only a name and independently colored date squares; click a subtask name to rename it inline. New subtasks start with blank dates. Use the existing color tools and square dragging. Moving a parent task between projects carries its subtasks; deleting it also deletes its subtasks. The trash tool can delete a subtask individually. No description or comments are shown for subtasks.
+Right-click a task name and choose **Add subtask**, then type a name and press Enter or Tab. Subtasks appear indented beneath their parent. They have independently colored date squares; click a subtask name to open its details with an editable name, rich description, and separate comment entries. New subtasks start with blank dates. Use the existing color tools and square dragging. Moving a parent task between projects carries its subtasks; deleting it also deletes its subtasks. The trash tool can delete a subtask individually. Subtask details autosave independently of their parent. Android long press opens subtask details.
 
 Daily retains individual date squares. Weekly and Monthly aggregate those saved dates into one cell per period, including subtask rows.
 
 ## v1.14.0 validation
 
-66 automated regression tests cover week/month aggregation for all row types, mixed status colors, period boundaries, leap years, date editing, creation row order, and existing desktop/Android behavior. Interactive browser visual verification was unavailable in this session. No Supabase schema or data changes were needed for these views.
+67 automated regression tests cover week/month aggregation for all row types, mixed status colors, period boundaries, leap years, date editing, creation row order, and existing desktop/Android behavior. Interactive browser visual verification was unavailable in this session. No Supabase schema or data changes were needed for these views.
+
+## v1.14.1
+
+Clicking a desktop subtask now opens SUBTASK DETAILS rather than an inline name field. Names still copy to the clipboard. Names, descriptions, and multiple comments save automatically on the subtask using existing task/comment records. Android long press opens the same details panel. No backend schema changes.
