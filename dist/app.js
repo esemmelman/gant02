@@ -13,7 +13,7 @@ let projects=[],tasks=[],collapsed=new Set(),start=localToday(),days=120,cw=26,p
 const drafts=new Map(),creatingRows=new Set();
 let viewScale='daily',subtaskEntry=null;
 const taskMenu=document.createElement('div');taskMenu.id='task-menu';taskMenu.className='task-context-menu';taskMenu.hidden=true;taskMenu.setAttribute('role','menu');document.body.append(taskMenu);
-const viewSettings={daily:{days:120,standard:26,compact:20,detailed:40},weekly:{days:26,standard:52,compact:40,detailed:72},monthly:{days:12,standard:72,compact:56,detailed:96}};
+const viewSettings={daily:{days:120,standard:26,compact:20,detailed:40},weekly:{days:26,standard:40,compact:34,detailed:52},monthly:{days:12,standard:72,compact:56,detailed:96}};
 let cells=new Map(),paintMode='assigned',paintQueue=Promise.resolve(),paintNeedsReload=false;
 let squareDrag=null,deleteMode=false,deleting=false;
 const status=(s,failed=false)=>{$('sync').textContent=s;$('sync').classList.toggle('failed',failed);};
@@ -61,7 +61,7 @@ function spanHTML(s,e,project=false,t=null){if(!s||!e)return '';const x=diff(s,s
 function calendarHeader(width){if(viewScale==='daily'){
 const dayHeaders=[];for(let i=0;i<days;i++){const d=add(start,i),dt=date(d),month=dt.toLocaleDateString('en-US',{month:'short',timeZone:'UTC'}),weekday=dt.toLocaleDateString('en-US',{weekday:'short',timeZone:'UTC'}).toUpperCase();dayHeaders.push(`<div class="date-column ${d===localToday()?'today':''}" data-day="${d}" title="${dateHint(d)}"><span class="sheet-letter">${columnName(i+2)}</span><span class="header-band"></span><span class="vertical-month">${month}</span><span class="weekday">${weekday}</span><span class="day-number" title="${dateHint(d)}">${String(dt.getUTCDate()).padStart(2,'0')}</span></div>`);}
 return `<div class="calendar date-columns" style="width:${width}px">${dayHeaders.join('')}</div>`;}
-const periods=timelinePeriods();return `<div class="calendar period-calendar" style="width:${width}px">${periods.map(p=>`<div class="period-column" data-start="${p.from}" data-end="${p.to}" style="width:${cw}px"><span>${viewScale==='weekly'?weekNumber(p.from):date(p.from).toLocaleDateString('en-US',{month:'short',timeZone:'UTC'})}</span></div>`).join('')}</div>`;}
+const periods=timelinePeriods();return `<div class="calendar period-calendar" style="width:${width}px">${periods.map(p=>`<div class="period-column" data-start="${p.from}" data-end="${p.to}" style="width:${cw}px">${viewScale==='weekly'?`<span class="week-number">${weekNumber(p.from)}</span><span class="week-start">${date(p.from).toLocaleDateString('en-US',{month:'short',timeZone:'UTC'})}. ${date(p.from).getUTCDate()}</span>`:`<span>${date(p.from).toLocaleDateString('en-US',{month:'short',timeZone:'UTC'})}</span>`}</div>`).join('')}</div>`;}
 function timelinePeriods(scale=viewScale,anchor=start,count=days){const first=scale==='weekly'?add(anchor,-((date(anchor).getUTCDay()+6)%7)):scale==='monthly'?anchor.slice(0,8)+'01':anchor;return Array.from({length:count},(_,i)=>{const from=scale==='monthly'?shiftCalendarMonth(first,i):add(first,i*(scale==='weekly'?7:1));return {from,to:scale==='monthly'?add(shiftCalendarMonth(from,1),-1):add(from,scale==='weekly'?6:0)};});}
 
 function weekNumber(day){const d=date(day);d.setUTCDate(d.getUTCDate()+3-((d.getUTCDay()+6)%7));const first=new Date(Date.UTC(d.getUTCFullYear(),0,4,12));return 1+Math.round(((d-first)/DAY-3+((first.getUTCDay()+6)%7))/7);}

@@ -1,4 +1,4 @@
-# Gant02 · v1.14.1
+# Gant02 · v1.14.2
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -81,7 +81,7 @@ Desktop has a New task entry immediately above each New project entry. These cre
 
 ## Timeline views
 
-The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on desktop. Daily retains 120 individual date cells. Weekly shows 26 columns, one complete Monday–Sunday week per cell, with only the ISO week number in each header. Monthly shows 12 columns, one full calendar month per cell, with month names only. Every project, task, and subtask summary cell is colored when any of its dates in that period is colored. Multiple statuses appear together as color segments; periods without colored dates stay blank. Explicitly cleared dates do not contribute. Standard/Compact/Detailed adjusts column widths. Clicking a summary cell (or pressing Enter) opens its period in Daily view for precise painting and dragging. Summary navigation never changes stored dates. Arrow navigation advances by four weeks in Daily, one week in Weekly, and one calendar month in Monthly. Today shows today or its containing week/month. Android keeps its simplified list.
+The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on desktop. Daily retains 120 individual date cells. Weekly shows 26 columns, one complete Monday–Sunday week per cell, with the ISO week number above its Monday start date (for example, Oct. 19). Monthly shows 12 columns, one full calendar month per cell, with month names only. Every project, task, and subtask summary cell is colored when any of its dates in that period is colored. Multiple statuses appear together as color segments; periods without colored dates stay blank. Explicitly cleared dates do not contribute. Standard/Compact/Detailed adjusts column widths. Clicking a summary cell (or pressing Enter) opens its period in Daily view for precise painting and dragging. Summary navigation never changes stored dates. Arrow navigation advances by four weeks in Daily, one week in Weekly, and one calendar month in Monthly. Today shows today or its containing week/month. Android keeps its simplified list.
 
 ## Subtasks and period labels (v1.13.0)
 
@@ -96,3 +96,7 @@ Daily retains individual date squares. Weekly and Monthly aggregate those saved 
 ## v1.14.1
 
 Clicking a desktop subtask now opens SUBTASK DETAILS rather than an inline name field. Names still copy to the clipboard. Names, descriptions, and multiple comments save automatically on the subtask using existing task/comment records. Android long press opens the same details panel. No backend schema changes.
+
+## v1.14.2
+
+Weekly columns are narrower: Standard 40px, Compact 34px, Detailed 52px. Each header stacks its week number above the Monday start date formatted Mmm. d. Task row heights and period color aggregation are unchanged.

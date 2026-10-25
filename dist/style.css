@@ -49,3 +49,6 @@ body.android-mode{font-family:system-ui,Arial,sans-serif}.android-mode main{marg
 
 /* v1.14.0: one column per week/month */
 .period-calendar{flex-direction:row;align-items:stretch}.period-column{flex:none;display:flex;align-items:center;justify-content:center;border-right:1px solid #cad8cf;background:#edf4ef;color:#365c44;font-size:15px;font-weight:650;overflow:hidden}.period-square{cursor:pointer!important}.period-square:focus-visible{outline:2px solid #245d40;outline-offset:-2px;z-index:3}
+
+/* v1.14.2: compact week columns with Monday dates */
+.period-column:has(.week-number){flex-direction:column}.week-number{line-height:20px}.week-start{margin-top:4px;font-size:9px;font-weight:500;line-height:14px;white-space:nowrap;letter-spacing:-.1px}
