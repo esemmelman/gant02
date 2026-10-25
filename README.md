@@ -1,4 +1,4 @@
-# Gant02 · v1.13.0
+# Gant02 · v1.14.0
 
 A compact spreadsheet Gantt planner. Public shared workspace; no sign-in. Anyone with the URL can read and edit its projects and tasks.
 
@@ -20,7 +20,7 @@ GitHub Pages (automatically deployed on pushes to main): https://esemmelman.gith
 - Task rows are 22px high; project rows are 24px. No drag handles, project counts, or per-project add-task links.
 - Click a task bar/name or project name to edit its name and rich-text notes. Notes and detail fields save automatically after a short pause; closing the panel flushes pending edits.
 - Focus date squares and use left/right arrows to navigate; Enter colors the square and Delete clears it.
-- Use Today, month navigation, zoom, search, and filters to navigate. Daily shows 120 days, Weekly shows 182 days, and Monthly shows 366 days from the selected start.
+- Use Today, month navigation, zoom, search, and filters to navigate. Daily shows 120 days, Weekly shows 26 complete weeks, and Monthly shows 12 complete calendar months.
 - Grid edits save immediately to Supabase. Other sessions refresh every 15 seconds while idle. Detail edits save automatically.
 
 ## Backend isolation
@@ -77,14 +77,18 @@ Android task names and day counts use blue, amber, or green when that task has a
 
 A sticky text box at the top adds tasks to General. Tap the box or microphone once to start browser speech recognition, or type normally. Tap the microphone again to stop. Review the transcript and press Add or Enter. General is created if missing; a single transaction creates the task with today's start/finish and blue Assigned square. Repeated retries reuse a request ID to avoid duplicate tasks. Failed saves retain the text. Browser microphone permission and supported SpeechRecognition/webkitSpeechRecognition are required for dictation; typing and keyboard dictation remain available when browser voice input is unsupported or denied. No audio recording is stored in Supabase.
 
-Desktop has a New project entry immediately above each New task entry. These create independent projects and use separate drafts. Android retains its existing entry layout.
+Desktop has a New task entry immediately above each New project entry. These create independent projects and use separate drafts. Android retains its existing entry layout.
 
 ## Timeline views
 
-The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on desktop. Weekly groups the header by weeks and shows about six months at 12px per day. Monthly groups months across about a year at 5px per day. Daily retains the original 26px day cells. Standard/Compact/Detailed adjusts density within each view. Every colored square still represents a single date; painting, moving, Sunday shading, and hover labels use the same date. View/density changes preserve the first visible date. Arrow navigation advances by four weeks in Daily, one week in Weekly, and a calendar month in Monthly. Today returns to today's date in any view. Android keeps its simplified list.
+The Daily/Weekly/Monthly dropdown appears before the ‹ and Today buttons on desktop. Daily retains 120 individual date cells. Weekly shows 26 columns, one complete Monday–Sunday week per cell, with only the ISO week number in each header. Monthly shows 12 columns, one full calendar month per cell, with month names only. Every project, task, and subtask summary cell is colored when any of its dates in that period is colored. Multiple statuses appear together as color segments; periods without colored dates stay blank. Explicitly cleared dates do not contribute. Standard/Compact/Detailed adjusts column widths. Clicking a summary cell (or pressing Enter) opens its period in Daily view for precise painting and dragging. Summary navigation never changes stored dates. Arrow navigation advances by four weeks in Daily, one week in Weekly, and one calendar month in Monthly. Today shows today or its containing week/month. Android keeps its simplified list.
 
 ## Subtasks and period labels (v1.13.0)
 
 Right-click a task name and choose **Add subtask**, then type a name and press Enter or Tab. Subtasks appear indented beneath their parent. They have only a name and independently colored date squares; click a subtask name to rename it inline. New subtasks start with blank dates. Use the existing color tools and square dragging. Moving a parent task between projects carries its subtasks; deleting it also deletes its subtasks. The trash tool can delete a subtask individually. No description or comments are shown for subtasks.
 
-Weekly headers show ISO week numbers; Monthly headers show month names only. Neither overview displays numbered dates in the header. Date squares still represent individual dates, with the exact date available on hover.
+Daily retains individual date squares. Weekly and Monthly aggregate those saved dates into one cell per period, including subtask rows.
+
+## v1.14.0 validation
+
+66 automated regression tests cover week/month aggregation for all row types, mixed status colors, period boundaries, leap years, date editing, creation row order, and existing desktop/Android behavior. Interactive browser visual verification was unavailable in this session. No Supabase schema or data changes were needed for these views.
